@@ -6,14 +6,14 @@ end
 
 class Person < Nameable
   attr_reader :id
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..100)
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @books_rented = []
+    @rentals = []
     super()
   end
 
@@ -31,11 +31,6 @@ class Person < Nameable
 
   def correct_name
     @name
-  end
-
-  def rent_book(book)
-    @books_rented << book
-    book.rent_book = self
   end
 end
 
