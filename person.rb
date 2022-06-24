@@ -37,7 +37,6 @@ class Person < Nameable
     @books_rented << book
     book.rent_book = self
   end
-
 end
 
 class Decorator < Nameable
@@ -66,4 +65,3 @@ class TrimmerDecorator < Decorator
     end
   end
 end
-
