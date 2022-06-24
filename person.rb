@@ -1,6 +1,6 @@
 class Nameable
   def correct_name
-    raise NotImplementedError 
+    raise NotImplementedError
   end
 end
 
@@ -13,6 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    super()
   end
 
   private
@@ -35,6 +36,7 @@ end
 class Decorator < Nameable
   def initialize(nameable)
     @nameable = nameable
+    super()
   end
 
   def correct_name
@@ -58,9 +60,9 @@ class TrimmerDecorator < Decorator
   end
 end
 
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalizedPerson = CapitalizeDecorator.new(person)
-capitalizedPerson.correct_name
-capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
-capitalizedTrimmedPerson.correct_name
+# person = Person.new(22, 'maximilianus')
+# person.correct_name
+# capitalizedPerson = CapitalizeDecorator.new(person)
+# capitalizedPerson.correct_name
+# capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
+# capitalizedTrimmedPerson.correct_name
