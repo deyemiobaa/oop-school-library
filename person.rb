@@ -13,6 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @books_rented = []
     super()
   end
 
@@ -31,6 +32,12 @@ class Person < Nameable
   def correct_name
     @name
   end
+
+  def rent_book(book)
+    @books_rented << book
+    book.rent_book = self
+  end
+
 end
 
 class Decorator < Nameable
