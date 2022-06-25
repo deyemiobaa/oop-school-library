@@ -12,7 +12,7 @@ git clone  <https://github.com/deyemiobaa/oop-school-library.git>
 ```
 - run ```cd oop-school-library``` to enter the project folder
 - run `bundle install`
-- run `ruby app.rb`
+- run `ruby main.rb`
 
 ## Authors
 
