@@ -25,16 +25,14 @@ class App
 
   def list_people
     puts 'List of people:'
-    @people.each do
-      |person, index|
+    @people.each do |person, index|
       puts "#{index}) - Name: #{person.name} ID: #{person.id} Age: #{person.age}"
     end
   end
 
   def list_books
     puts 'List of books:'
-    @books.each do
-      |book, index|
+    @books.each do |book, index|
       puts "(#{index}) - Author: #{book.author} Title: #{book.title}"
     end
   end
@@ -78,7 +76,7 @@ class App
       date = gets.chomp
       @rentals << Rental.new(date, @people[person_id], @books[book_id])
       puts "\n"
-      puts "Rental created!"
+      puts 'Rental created!'
     else
       puts 'You do not have permission to rent books!'
     end
@@ -97,8 +95,8 @@ class App
   def list_rentals_by_person_id
     puts 'Enter person ID:'
     person_id = gets.chomp.to_i
-    puts 'List of rentals for person id #{person_id}:'
-    @rentals.each {|rental| puts rental.to_s if rental.person.id == person_id}
+    puts "List of rentals for person id #{person_id}:"
+    @rentals.each { |rental| puts rental.to_s if rental.person.id == person_id }
   end
 
   def run
@@ -117,25 +115,23 @@ class App
         create_rental
       when '6'
         list_rentals_by_person_id
-      when '7'
-        puts 'Goodbye!'
-        break
       else
-        puts 'Invalid option!'
+        end_program(option)
+        break
       end
     end
   end
 
+  def end_program(option)
+    puts option == '7' ? 'Goodbye!' : 'Invalid option. Try again.'
+  end
+
   def check_permissom(person)
-    if person.can_use_services?
-      true
-    else
-      false
-    end
+    person.can_use_services?
   end
 
   def create_person
-    puts "Do you want to create a 1) Student or 2) Teacher: [Input 1 or 2]"
+    puts 'Do you want to create a 1) Student or 2) Teacher: [Input 1 or 2]'
     option = gets.chomp
     case option
     when '1'
