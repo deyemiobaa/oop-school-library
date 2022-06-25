@@ -1,3 +1,5 @@
+require './rental'
+
 class Nameable
   def correct_name
     raise NotImplementedError
@@ -31,6 +33,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rentals(date, _person, book)
+    Rental.new(date, self, book)
   end
 end
 

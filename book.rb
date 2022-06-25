@@ -1,3 +1,5 @@
+require './rental'
+
 class Book
   attr_accessor :title, :author, :rentals
 
@@ -5,5 +7,9 @@ class Book
     @title = title
     @author = author
     @rentals = []
+  end
+
+  def add_rentals(date, person, _book)
+    Rental.new(date, person, self)
   end
 end
