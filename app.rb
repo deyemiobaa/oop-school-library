@@ -68,7 +68,7 @@ class App
     list_people
     person_id = gets.chomp.to_i
     person = @people[person_id]
-    if check_permissom(person)
+    if check_permission(person)
       puts 'Enter book index from list below (Not ID):'
       list_books
       book_id = gets.chomp.to_i
@@ -126,7 +126,7 @@ class App
     puts option == '7' ? 'Goodbye!' : 'Invalid option. Try again.'
   end
 
-  def check_permissom(person)
+  def check_permission(person)
     person.can_use_services?
   end
 
