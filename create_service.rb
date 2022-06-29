@@ -41,8 +41,8 @@ def create_student
   age = gets.chomp.to_i
   puts 'Enter student classroom (Grade 1, Grade 2, etc):'
   classroom = gets.chomp
-  puts 'Enter student parent permission (Y/N):'
-  parent_permission = gets.chomp.to_s == 'Y'
+  puts 'Enter student parent permission (y/n):'
+  parent_permission = gets.chomp == 'y'
   student = Student.new(age, name, parent_permission, classroom)
   @app.add_person(student)
   puts "\nStudent #{name} created!"
@@ -59,21 +59,21 @@ def create_book
 end
 
 def create_rental
-  puts 'Enter person index from list below (Not ID):'
   list_people
+  puts "\nEnter person index from list above (Not ID):"
   person_id = gets.chomp.to_i
   person = @app.people[person_id]
   if check_permission(person)
-    puts 'Enter book index from list below (Not ID):'
     list_books
+    puts "\nEnter book index from list below (Not ID):"
     book_id = gets.chomp.to_i
     puts 'Enter rental date (YYYY-MM-DD):'
     date = gets.chomp
     rental = Rental.new(date, @app.people[person_id], @app.books[book_id])
     @app.add_rental(rental)
-    puts '\nRental created!'
+    puts "\nRental created!"
   else
-    puts '\nYou do not have permission to rent books!'
+    puts "\nYou do not have permission to rent books!"
   end
 end
 

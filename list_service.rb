@@ -10,15 +10,23 @@ def list_service(option)
 end
 
 def list_people
+  if @app.people.empty?
+      puts 'No persons available, create one first'
+      main
+  end
   puts 'List of people:'
-  @app.people.each do |person, index|
-    puts "#{index}) - Name: #{person.name} ID: #{person.id} Age: #{person.age}"
+  @app.people.each_with_index do |person, index|
+    puts "(#{index}) - Name: #{person.name} ID: #{person.id} Age: #{person.age}"
   end
 end
 
 def list_books
+  if @app.books.empty?
+    puts 'No books available, create one first'
+    main
+  end
   puts 'List of books:'
-  @app.books.each do |book, index|
+  @app.books.each_with_index do |book, index|
     puts "(#{index}) - Author: #{book.author} Title: #{book.title}"
   end
 end

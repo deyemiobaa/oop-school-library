@@ -32,9 +32,9 @@ def perform_action(option)
     main
   else
     end_program(option)
+    @storage.save_data(@app)
     exit
   end
-  @storage.save_data(@app)
 end
 
 def end_program(option)
