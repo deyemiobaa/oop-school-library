@@ -1,10 +1,13 @@
 require './app'
 require './create_service'
 require './list_service'
+require './storage'
 
 @app = App.new
+@storage = Storage.new
 
 def main
+  @storage.load_data(@app)
   puts "\n\nWelcome to School Library App!\n\n"
   puts 'Please choose an option by entering a number:'
   puts '1 - List all books'
@@ -31,6 +34,7 @@ def perform_action(option)
     end_program(option)
     exit
   end
+  @storage.save_data(@app)
 end
 
 def end_program(option)
