@@ -10,23 +10,31 @@ def list_service(option)
 end
 
 def list_people
+  if @app.people.empty?
+    puts 'No persons available, create one first'
+    main
+  end
   puts 'List of people:'
-  @people.each do |person, index|
-    puts "#{index}) - Name: #{person.name} ID: #{person.id} Age: #{person.age}"
+  @app.people.each_with_index do |person, index|
+    puts "(#{index}) - Name: #{person.name} ID: #{person.id} Age: #{person.age}"
   end
 end
 
 def list_books
+  if @app.books.empty?
+    puts 'No books available, create one first'
+    main
+  end
   puts 'List of books:'
-  @books.each do |book, index|
+  @app.books.each_with_index do |book, index|
     puts "(#{index}) - Author: #{book.author} Title: #{book.title}"
   end
 end
 
-def list_rentals_by_person_id
+def list_rental_by_person_id
   puts 'Enter person ID:'
   person_id = gets.chomp.to_i
-  rentals_list = @rentals.select { |rental| rental.person_id == person_id }
+  rentals_list = @app.rentals.select { |rental| rental.person.id == person_id }
   if rentals_list.empty?
     puts 'No rentals found for this ID!'
   else
