@@ -21,6 +21,13 @@ git clone  <https://github.com/deyemiobaa/oop-school-library.git>
 - GitHub: [@deyemiobaa](https://github.com/deyemiobaa)
 - Twitter: [@deyemiobaa](https://twitter.com/deyemiobaa)
 - LinkedIn: [Sodiq Aderibigbe](https://linkedin.com/in/sodiqa)
+  
+👤 **Alfred Bisimwa**
+
+- GitHub: [@alfredbis29](https://github.com/Alfredbis29)
+- Twitter: [@AlfredBisimwa](https://twitter.com/AlfredBisimwa1)
+- LinkedIn: [AlfredBis](https://www.linkedin.com/in/kalumuna-bisimwa-0501a81a8/)
+
 
 ## 🤝 Contributing
 
