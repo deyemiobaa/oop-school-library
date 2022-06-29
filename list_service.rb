@@ -11,8 +11,8 @@ end
 
 def list_people
   if @app.people.empty?
-      puts 'No persons available, create one first'
-      main
+    puts 'No persons available, create one first'
+    main
   end
   puts 'List of people:'
   @app.people.each_with_index do |person, index|

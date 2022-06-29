@@ -5,9 +5,9 @@ require './storage'
 
 @app = App.new
 @storage = Storage.new
+@storage.load_data(@app)
 
 def main
-  @storage.load_data(@app)
   puts "\n\nWelcome to School Library App!\n\n"
   puts 'Please choose an option by entering a number:'
   puts '1 - List all books'

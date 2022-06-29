@@ -12,19 +12,19 @@ class Storage
   end
 
   def create_file
-    @filename.each {|file| File.new(file, 'w+') unless File.exist?(file)}
+    @filename.each { |file| File.new(file, 'w+') unless File.exist?(file) }
   end
 
-  def save_data(data)
+  def save_data(app)
     create_file
-    save_people(data)
-    save_rentals(data)
-    save_books(data)
+    save_people(app)
+    save_rentals(app)
+    save_books(app)
   end
 
   def save_people(data)
     people_data = data.people.map do |person|
-      if person.specialization?
+      if person.is_a?(Teacher)
         {
           name: person.name,
           age: person.age,
@@ -47,8 +47,8 @@ class Storage
     rentals_data = data.rentals.map do |rental|
       {
         date: rental.date,
-        person: rental.person,
-        book: rental.book
+        person: rental.person.to_json,
+        book: rental.book.to_json
       }
     end
     json_data = JSON.generate(rentals_data)
@@ -59,7 +59,7 @@ class Storage
     books_data = data.books.map do |book|
       {
         title: book.title,
-        author: book.author,
+        author: book.author
       }
     end
     json_data = JSON.generate(books_data)
@@ -74,39 +74,47 @@ class Storage
 
   def load_books(app)
     return unless File.exist?('books.json')
-    return unless File.empty?('books.json')
+    return if File.empty?('books.json')
 
     file = File.read('books.json')
     file_data = JSON.parse(file)
     file_data.each do |data|
-      book = Book.new(data[:title], data[:author])
+      book = Book.new(data['title'], data['author'])
       app.add_book(book)
     end
   end
 
   def load_people(app)
     return unless File.exist?('people.json')
-    return unless File.empty?('people.json')
+    return if File.empty?('people.json')
 
     file = File.read('people.json')
     file_data = JSON.parse(file)
     file_data.each do |data|
       if data.key?('specialization')
-        app.add_person(Teacher.new(data[:name], data[:age], data[:specialization]))
+        app.add_person(Teacher.new(data['name'], data['age'], data['specialization']))
       else
-        app.add_person(Student.new(data[:age], data[:name], data[:parent_permission], data[:classroom]))
+        app.add_person(Student.new(data['age'], data['name'], data['parent_permission'], data['classroom']))
       end
     end
   end
 
   def load_rentals(app)
     return unless File.exist?('rentals.json')
-    return unless File.empty?('rentals.json')
+    return if File.empty?('rentals.json')
 
     file = File.read('rentals.json')
     file_data = JSON.parse(file)
     file_data.each do |data|
-      app.add_rental(Rental.new(data[:date], data[:person], data[:book]))
+      if Student.from_json(data['person']).is_a? Student
+        student = Student.from_json(data['person'])
+        book = Book.from_json(data['book'])
+        app.add_rental(Rental.new(data['date'], student, book))
+      else
+        teacher = Teacher.from_json(data['person'])
+        book = Book.from_json(data['book'])
+        app.add_rental(Rental.new(data['date'], teacher, book))
+      end
     end
   end
 end
