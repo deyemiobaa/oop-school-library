@@ -2,7 +2,7 @@ require 'json'
 
 class Storage
   attr_reader :filename
-  
+
   def initialize
     @filename = %w[rentals.json people.json books.json]
   end

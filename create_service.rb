@@ -62,14 +62,14 @@ def create_rental
   puts 'Enter person index from list below (Not ID):'
   list_people
   person_id = gets.chomp.to_i
-  person = @people[person_id]
+  person = @app.people[person_id]
   if check_permission(person)
     puts 'Enter book index from list below (Not ID):'
     list_books
     book_id = gets.chomp.to_i
     puts 'Enter rental date (YYYY-MM-DD):'
     date = gets.chomp
-    rental = Rental.new(date, @people[person_id], @books[book_id])
+    rental = Rental.new(date, @app.people[person_id], @app.books[book_id])
     @app.add_rental(rental)
     puts '\nRental created!'
   else
