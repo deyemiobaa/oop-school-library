@@ -2,7 +2,7 @@ require '../student'
 
 describe Student do
   it 'is an instance of Student' do
-    student = Student.new
+    student = Student.new(15, 'John', false, 'classroom')
     expect(student).to be_instance_of(Student)
   end
 

@@ -14,7 +14,7 @@ describe Classroom do
   it 'can add students' do
     classroom = Classroom.new('English')
     student = double('Student')
-    classroom.add_student(student)
-    expect(classroom.students).to eq([student])
+    classroom.add_test_student(student)
+    expect(classroom.students).not_to eq([])
   end
 end
