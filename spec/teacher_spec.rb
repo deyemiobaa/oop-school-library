@@ -1,4 +1,4 @@
-require '../teacher'
+require_relative '../teacher'
 
 describe Teacher do
   it 'is an instance of Teacher' do

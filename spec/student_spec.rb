@@ -1,4 +1,4 @@
-require '../student'
+require_relative '../student'
 
 describe Student do
   it 'is an instance of Student' do

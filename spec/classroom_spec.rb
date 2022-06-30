@@ -1,4 +1,4 @@
-require '../classroom'
+require_relative '../classroom'
 
 describe Classroom do
   it 'has a label' do

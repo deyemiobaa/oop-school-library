@@ -1,4 +1,4 @@
-require '../decorator'
+require_relative '../decorator'
 
 describe Decorator do
   it 'has a name' do

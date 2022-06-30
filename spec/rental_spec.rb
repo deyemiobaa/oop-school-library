@@ -1,6 +1,6 @@
-require '../rental'
-require '../student'
-require '../book'
+require_relative '../rental'
+require_relative '../student'
+require_relative '../book'
 
 describe Rental do
   it 'is an instance of Rental' do
