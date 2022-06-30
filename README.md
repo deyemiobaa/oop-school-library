@@ -12,7 +12,12 @@ git clone  <https://github.com/deyemiobaa/oop-school-library.git>
 ```
 - run ```cd oop-school-library``` to enter the project folder
 - run `bundle install`
-- run `ruby main.rb`
+- run `ruby main.rb` to launch console app
+
+### Tests
+
+All tests are present in the `spec` folder.
+Run `rspec spec spec/` to run tests.
 
 ## Authors
 
