@@ -1,5 +1,3 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
-
 # OOP school system
 
 > terminal app for a school management system in ruby
